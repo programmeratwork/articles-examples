@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <script src="http://fb.me/react-0.12.2.js"></script>
+    <script src="http://fb.me/JSXTransformer-0.12.2.js"></script>
+
+    <script type="text/jsx">
+      const itemsMenu = ['menu 1', 'menu 2', 'menu 3'];
+
+      var Menu = React.createClass({
+        render: function () {
+          var items = itemsMenu.map(function (item) {
+            return <li>{item}</li>;
+          });
+
+          return (
+              <ul>
+                {items}
+              </ul>
+          );
+        }
+      });
+
+      var App = React.createClass({
+        getDefaultProps: function () {
+          return {
+            subtitulo: 'valor inicializado'
+          }
+        },
+        render: function () {
+          return (
+              <div>
+                <div>{this.props.titulo} - {this.props.subtitulo}</div>
+                <Menu />
+              </div>
+          )
+        }
+      });
+
+      var tituloAplicacion = "Mi App desde variable";
+
+      React.render(<App titulo={tituloAplicacion} />, document.body);
+    </script>
+  </body>
+</html>
